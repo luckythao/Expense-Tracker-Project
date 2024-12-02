@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Expense Tracker</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <h1>Expense Tracker</h1>
@@ -20,10 +21,12 @@
                         <div id="status"></div>
                     </section>
                     <h3>Add Transaction</h3>
+                    <!-- switch between expense/income -->
                     <div class="switch-button" id="switch-button">
                         <span>Expense</span>
                         <span>Income</span>
                     </div>
+                    
                     <div>
                         <form>
                             <div class="name-amount">
@@ -40,7 +43,7 @@
                                     min="0.01"
                                     step="0.01"
                                     required
-                                    </input>
+                                    />
                                 </div>
                             </div>
                             <label>Date</label>
@@ -49,7 +52,6 @@
                         </form>
                     </div>
                 </div>
-
                 <div class="dashboard">
                     <div class="balance">
                         <h3>Balance</h3>
@@ -62,6 +64,9 @@
                     <div class="expense">
                         <h3>Expense</h3>
                         <span id="expense">$0.00</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="expenseChart" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
