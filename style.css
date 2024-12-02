@@ -16,9 +16,14 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin:10 px auto 10px auto;
+    margin:10 px auto;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+html{
+    height: 100%;
+    overflow: auto;
 }
 /* h1 heading */
 h1{
@@ -36,17 +41,18 @@ h1{
     padding: 20px;
     margin:auto;
     background-color:#fff;
-    margin-top:-10px;
+    margin-top: 0px;
 }
 
 /* wrapper for the entire layout */
 .wrapper {
     width: 100%;
-    height: 100vh; 
+    height: auto; 
     display: flex;
     justify-content: flex-start; 
     align-items: flex-start; 
     padding: 20px;
+    padding-bottom: 0px;
 }
 
 /* left content (expense tracker and form) */
@@ -71,7 +77,7 @@ h1{
     margin: 0 auto;
     padding: 20px;
 
-    width: 90%;  
+    width: 100%;  
     max-width: 400px;  
     margin: 20px auto;  
 
@@ -139,12 +145,8 @@ h1{
     z-index: 2;
 }
 
-span:first-child {
-    color: #FFF;
-}
-
 .switch-button.switch-active span:first-child {
-    color: #555;
+    color: black;
 }
 
 .switch-button.switch-active span:last-child {
@@ -162,7 +164,7 @@ span:first-child {
 /* target everything inside the div (form and its contents) */
 div form {
     max-width: 600px;             
-    margin: 20px auto;           
+    margin: 10px auto;           
     padding: 20px;               
     background-color: #f9f9f9;    
     border-radius: 8px;           
@@ -234,3 +236,99 @@ div form input:focus, div form button:focus {
 }
 
 
+/* transaction list */
+#listOfTransaction {
+    text-align: left; 
+    padding-left: 0;  
+    list-style-position: outside; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    max-height: 225px;
+}
+
+#statusTransaction {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+
+ul{
+    padding-left: 20px;
+    list-style-type: none;
+}
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    position: relative;
+}
+ul li:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+.name {
+    flex: 1;
+}
+.name h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.name p {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.amount {
+    font-weight: 700;
+    text-align: center;
+    min-width: 100px;
+}
+.amount.income {
+    color: #44D62C;
+ }
+.amount.expense {
+    color: #CD001A;
+}
+
+.action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #BF565A ;
+    color: white;
+    height: 100%;
+    width: 35px;
+    display: grid;
+    place-items: center;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: all 300ms;
+}
+ul li:hover .action {
+    transform: scaleX(1);
+}
+
+.action svg{
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+
+/* pie chart container */
+.dashboard .chart-container {
+    width: 205%;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 0px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* making sure the canvas inside the chart scales correctly */
+.dashboard .chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+}
