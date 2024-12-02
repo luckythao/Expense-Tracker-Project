@@ -57,12 +57,14 @@ function addTransaction(e){
     const formData = new FormData(this);
     const amount = parseFloat(formData.get("amount"));
     const transactionAmount = defulttransactionmode === "expense" ? -amount : amount;
-   
+
+    const dateString = formData.get("date"); 
+    const dateParts = dateString.split("-");
     const newTransaction = {
         id: transactions.length + 1,
         name: formData.get("name"),
         amount: transactionAmount,
-        date: new Date(formData.get("date")),
+         date: new Date(dateParts[0], dateParts[1] - 1, dateParts[2]),
         type: defulttransactionmode,
     }
 
